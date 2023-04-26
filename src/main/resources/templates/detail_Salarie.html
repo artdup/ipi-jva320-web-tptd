@@ -100,6 +100,7 @@
             <div class="col-lg-6">
                 <input form="saveForm" class="btn btn-primary" type="submit" value="Enregistrer">
                 <form method="POST" action="/salaries/{id}/delete">
+                    <input type="hidden" name="_method" value="delete"/>
                     <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce salarié ?')" class="btn btn-danger">Supprimer</button>
                 </form>
             </div>
