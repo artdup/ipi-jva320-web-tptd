@@ -28,9 +28,10 @@ import java.util.stream.StreamSupport;
 public class SalarieAideADomicileService {
 
     @Autowired
-    private SalarieAideADomicileRepository salarieAideADomicileRepository;
+    private static SalarieAideADomicileRepository salarieAideADomicileRepository;
 
-    public SalarieAideADomicileService() {
+    public SalarieAideADomicileService(SalarieAideADomicileRepository salarieAideADomicileRepository) {
+        this.salarieAideADomicileRepository = salarieAideADomicileRepository;
     }
 
     /**
@@ -73,9 +74,10 @@ public class SalarieAideADomicileService {
      * @return le salarie
      */
     public SalarieAideADomicile getSalarie(Long id) {
-        Optional<SalarieAideADomicile> res = salarieAideADomicileRepository.findById(id);
+        Optional<SalarieAideADomicile> res = salarieAideADomicileRepository.findById(id.longValue());
         return res.isEmpty() ? null : res.get();
     }
+    
 
     /**
      * Créée un nouveau salarié en base de données.
@@ -279,5 +281,7 @@ public class SalarieAideADomicileService {
 
         salarieAideADomicileRepository.save(salarieAideADomicile);
     }
-
-}
+    public static void deleteById(Long id) {
+        salarieAideADomicileRepository.deleteById(id);
+      }
+    }

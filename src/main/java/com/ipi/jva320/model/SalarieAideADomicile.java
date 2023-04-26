@@ -19,6 +19,7 @@ public class SalarieAideADomicile {
     private Long id;
 
     private String nom;
+    private String prenom;
 
     public static List<DayOfWeek> joursHabituellementTravailles = new ArrayList<DayOfWeek>();
 
@@ -44,14 +45,16 @@ public class SalarieAideADomicile {
     private double congesPayesAcquisAnneeNMoins1= 0;
     private double congesPayesPrisAnneeNMoins1= 0;
 
+
     public SalarieAideADomicile() {
     }
 
-    public SalarieAideADomicile(String nom, LocalDate moisDebutContrat, LocalDate moisEnCours,
+    public SalarieAideADomicile(String nom, String prenom, LocalDate moisDebutContrat, LocalDate moisEnCours,
                                 //LinkedHashSet<LocalDate> congesPayesPris,
                                 double joursTravaillesAnneeN, double congesPayesAcquisAnneeN,
                                 double joursTravaillesAnneeNMoins1, double congesPayesAcquisAnneeNMoins1, double congesPayesPrisAnneeNMoins1) {
         this.nom = nom;
+        this.prenom = prenom;
         this.moisDebutContrat = moisDebutContrat;
         this.moisEnCours = moisEnCours;
         this.joursTravaillesAnneeNMoins1 = joursTravaillesAnneeNMoins1;
@@ -132,13 +135,18 @@ public class SalarieAideADomicile {
     public String getNom() {
         return nom;
     }
+    public String getPrenom() {
+        return prenom;
+    }
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
 
     /**
      * @param nom the nom to set
      */
-    public SalarieAideADomicile setNom(String nom) {
+    public void setNom(String nom) {
         this.nom = nom;
-        return this;
     }
 
     public double getJoursTravaillesAnneeN() {
@@ -232,4 +240,8 @@ public class SalarieAideADomicile {
     public int hashCode() {
         return Objects.hash(id, nom);
     }
+
+    public void setDateEmbauche(LocalDate now) {
+    }
+
 }

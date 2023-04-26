@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <th:block th:include="common :: head"></th:block>
+</head>
+
+<body>
+    <th:block th:include="common :: body"></th:block>    
+    <form action="/salaries/save" method="post" th:object="${salarie}">
+        <div class="form-group">
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" name="nom" class="form-control" th:field="*{nom}" required>
+            <div th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}" class="invalid-feedback"></div>
+        </div>
+        <div class="form-group">
+            <label for="prenom">Prénom :</label>
+            <input type="text" id="prenom" name="prenom" class="form-control" th:field="*{prenom}" required>
+            <div th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}" class="invalid-feedback"></div>
+        </div>
+        <div class="form-group">
+            <label for="moisDebutContrat">Mois de début de contrat :</label>
+            <input type="date" id="moisDebutContrat" name="moisDebutContrat" class="form-control"
+                th:field="*{moisDebutContrat}" required>
+            <div th:if="${#fields.hasErrors('moisDebutContrat')}" th:errors="*{moisDebutContrat}"
+                class="invalid-feedback">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="joursTravaillesAnneeNMoins1">Jours travaillés année N-1 :</label>
+            <input type="number" id="joursTravaillesAnneeNMoins1" name="joursTravaillesAnneeNMoins1"
+                class="form-control" th:field="*{joursTravaillesAnneeNMoins1}" required>
+            <div th:if="${#fields.hasErrors('joursTravaillesAnneeNMoins1')}" th:errors="*{joursTravaillesAnneeNMoins1}"
+                class="invalid-feedback"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="congesPayesAcquisAnneeNMoins1">Congés payés acquis année N-1 :</label>
+            <input type="number" class="form-control" id="congesPayesAcquisAnneeNMoins1"
+                name="congesPayesAcquisAnneeNMoins1" th:field="*{congesPayesAcquisAnneeNMoins1}" required>
+            <span class="text-danger" th:if="${#fields.hasErrors('congesPayesAcquisAnneeNMoins1')}"
+                th:errors="*{congesPayesAcquisAnneeNMoins1}"></span>
+        </div>
+        <div class="form-group">
+            <label for="congesPayesPrisAnneeNMoins1">Congés payés pris année N-1 :</label>
+            <input type="number" class="form-control" id="congesPayesPrisAnneeNMoins1"
+                name="congesPayesPrisAnneeNMoins1" th:field="*{congesPayesPrisAnneeNMoins1}" required>
+            <span class="text-danger" th:if="${#fields.hasErrors('congesPayesPrisAnneeNMoins1')}"
+                th:errors="*{congesPayesPrisAnneeNMoins1}"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="joursTravaillesAnneeN">Jours travaillés année N :</label>
+            <input type="number" class="form-control" id="joursTravaillesAnneeN" name="joursTravaillesAnneeN"
+                th:field="*{joursTravaillesAnneeN}" required>
+            <span class="text-danger" th:if="${#fields.hasErrors('joursTravaillesAnneeN')}"
+                th:errors="*{joursTravaillesAnneeN}"></span>
+        </div>
+        <div class="form-group">
+            <label for="congesPayesAcquisAnneeN">Congés payés acquis année N :</label>
+            <input type="number" class="form-control" id="congesPayesAcquisAnneeN" name="congesPayesAcquisAnneeN"
+                th:field="*{congesPayesAcquisAnneeN}" required>
+            <div th:if="${#fields.hasErrors('congesPayesAcquisAnneeN')}" th:errors="*{congesPayesAcquisAnneeN}"></div>
+        </div>
+
+        <button type="submit">Enregistrer</button>
+    </form>
+</body>
+
+</html>
