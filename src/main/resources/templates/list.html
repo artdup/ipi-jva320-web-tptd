@@ -36,36 +36,28 @@
       <a href="/salaries/new" class="btn btn-primary">Nouveau salarié</a>
       <table class="table table-hover table-striped">
         <thead>
-        <tr>
-          <th scope="col">ID
-            <a href="/salaries?page=0&size=10&sortProperty=id&sortDirection=DESC"><i class="fa fa-chevron-up"></i></a>
-          </th>
-          <th scope="col">Nom
-            <a href="/salaries?page=0&size=10&sortProperty=nom&sortDirection=DESC"><i class="fa fa-chevron-up"></i></a>
-          </th>
-          <th scope="col"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Jeanne Dupond</td>
-          <td><a href="/salaries/2" class="btn btn-primary ember-view">Détail</a></td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Robert Martin</td>
-          <td><a href="/salaries/3" class="btn btn-primary ember-view">Détail</a></td>
-        </tr>
-        </tbody>
+          <tr>
+            <th scope="col">ID
+              <a href="/salaries?page=0&size=10&sortProperty=id&sortDirection=DESC"><i class="fa fa-chevron-up"></i></a>
+            </th>
+            <th scope="col">Nom
+              <a href="/salaries?page=0&size=10&sortProperty=nom&sortDirection=DESC"><i class="fa fa-chevron-up"></i></a>
+            </th>
+            <th scope="col"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="salarie : ${salaries}">
+            <td th:text="${salarie.id}"></td>
+            <td th:text="${salarie.nom}"></td>
+            <td><a th:href="@{/salaries/{id}(id=${salarie.id})}" class="btn btn-primary ember-view">Détail</a></td>
+          </tr>
+          </tbody>
       </table>
       <div class="row">
         <div class="col-lg-6">
-            <p>Affichage des salariés <span th:text="${#numbers.sequence(1, list.size() > 10 ? 10 : list.size()).size()}"></span> à 
-            <span th:text="${salarie.size() > 10 ? 10 : list.size()}"></span> sur un total de 
-            <span th:text="${salarie.size()}"></span>
-            </p>
-        </div>
+          <p>Affichage des salariés {{ salaries.size() > 10 ? 10 : salaries.size() }} sur un total de {{ salaries.size() }}</p>
+      </div>      
     </div>
         <div class="col-lg-6">
           <ul class="pagination">
